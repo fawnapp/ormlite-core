@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.j256.ormlite</groupId>
 	<artifactId>ormlite-core</artifactId>
-	<version>4.49-SNAPSHOT</version>
+	<version>4.49.fawn</version>
 	<packaging>jar</packaging>
 	<name>ORMLite Core</name>
 	<url>http://ormlite.sourceforge.net/</url>
@@ -72,7 +72,96 @@
 			</distributionManagement>
 		</profile>
 	</profiles>
+	
+	
+    <repositories>
+        <repository>
+            <id>central</id>
+            <name>Maven Repository Switchboard</name>
+            <layout>default</layout>
+            <url>http://repo1.maven.org/maven2</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>maven-s3-release-repo</id>
+            <name>S3 Release Repository</name>
+            <url>s3://mvn.fawnapp.com/release</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>maven-s3-snapshot-repo</id>
+            <name>S3 Snapshot Repository</name>
+            <url>s3://mvn.fawnapp.com/snapshot</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>  
+        <repository>
+            <id>phloc.com</id>
+            <url>http://repo.phloc.com/maven2</url>
+        </repository>
+    </repositories>
+
+
+    <pluginRepositories>  
+      <pluginRepository>  
+        <id>maven-s3-release-repo</id>  
+        <name>S3 Release Repository</name>  
+        <url>s3://mvn.fawnapp.com/release</url>  
+        <releases>  
+          <enabled>true</enabled>  
+        </releases>  
+        <snapshots>  
+          <enabled>false</enabled>  
+        </snapshots>  
+      </pluginRepository>  
+      <pluginRepository>  
+        <id>maven-s3-snapshot-repo</id>  
+        <name>S3 Snapshot Repository</name>  
+        <url>s3://mvn.fawnapp.com/snapshot</url>  
+        <releases>  
+          <enabled>false</enabled>  
+        </releases>  
+        <snapshots>  
+          <enabled>true</enabled>  
+        </snapshots>  
+      </pluginRepository>  
+    </pluginRepositories>
+
+    <distributionManagement>
+        <repository>
+            <id>maven-s3-release-repo</id>
+            <name>S3 Release Repository</name>
+            <url>s3://mvn.fawnapp.com/release</url>
+        </repository>
+        <snapshotRepository>
+            <id>maven-s3-snapshot-repo</id>
+            <name>S3 Snapshot Repository</name>
+            <url>s3://mvn.fawnapp.com/snapshot</url>
+        </snapshotRepository>
+    </distributionManagement> 
+    
+    
 	<build>
+	
+
+        <extensions>
+            <extension>
+                <groupId>org.springframework.build</groupId>
+                <artifactId>aws-maven</artifactId>
+                <version>5.0.0.RELEASE</version>
+            </extension>
+        </extensions> 
 		<finalName>ormlite-core</finalName>
 		<resources>
 			<resource>

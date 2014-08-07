@@ -439,7 +439,7 @@ public class TableUtils {
 		DatabaseConnection connection = connectionSource.getReadWriteConnection();
 		try {
 			int stmtC =
-					doStatements(connection, "create", statements, false, databaseType.isCreateTableReturnsNegative(),
+					doStatements(connection, "create", statements, true, databaseType.isCreateTableReturnsNegative(),
 							databaseType.isCreateTableReturnsZero());
 			stmtC += doCreateTestQueries(connection, databaseType, queriesAfter);
 			return stmtC;

@@ -86,7 +86,7 @@ public class TableUtilsTest extends BaseCoreTest {
 	@Test(expected = SQLException.class)
 	public void testCreateTableThrow() throws Exception {
 		final ConnectionSource connectionSource = createMock(ConnectionSource.class);
-		testCreate(connectionSource, databaseType, 1, true, null, new Callable<Integer>() {
+		testCreate(connectionSource, databaseType, 1, false, null, new Callable<Integer>() {
 			public Integer call() throws Exception {
 				return TableUtils.createTable(connectionSource, LocalFoo.class);
 			}
